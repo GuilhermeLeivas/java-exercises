@@ -1,6 +1,6 @@
 package br.com.leivas.exercise1;
 
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
 
