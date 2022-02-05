@@ -1,7 +1,6 @@
 package br.com.leivas.exercise6;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
