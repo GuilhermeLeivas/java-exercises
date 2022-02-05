@@ -1,7 +1,9 @@
 package br.com.leivas.exercise6;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ArraySumerUtil {
@@ -39,6 +41,11 @@ public class ArraySumerUtil {
             return;
         }
         int sum = IntStream.of(this.array).sum();
-        System.out.println("The sum of all elements in the array is " + sum);
+        System.out.println(this.formatSumString() + " = " + sum);
+    }
+
+    private String formatSumString() {
+        return Arrays.stream(this.array).mapToObj(element -> String.format("%s", element))
+                .collect(Collectors.joining("+"));
     }
 }
