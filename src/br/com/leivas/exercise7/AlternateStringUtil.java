@@ -47,16 +47,16 @@ public class AlternateStringUtil {
 
     private boolean isNotAlternate(int charIndex) {
         char current = this.value.charAt(charIndex);
-        boolean hasNotPreviousAlternate = false;
-        boolean hasNotNextAlternate = false;
-        if (charIndex != 0) {
+        boolean hasPreviousAlternate = false;
+        boolean hasNextAlternate = false;
+        if (charIndex != 0 && charIndex != 1) {
             char previous = this.value.charAt(charIndex - 2);
-            hasNotPreviousAlternate = Character.compare(current, previous) != 0;
+            hasPreviousAlternate = current == previous;
         }
-        if (charIndex != (this.value.length() - 1)) {
+        if (charIndex != (this.value.length() - 1) && charIndex != (this.value.length() - 2)) {
             char next = this.value.charAt(charIndex + 2);
-            hasNotNextAlternate = Character.compare(current, next) != 0;
+            hasNextAlternate = current == next;
         }
-        return !hasNotPreviousAlternate && !hasNotNextAlternate;
+        return hasPreviousAlternate || hasNextAlternate;
     }
 }
