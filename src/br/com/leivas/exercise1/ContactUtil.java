@@ -3,7 +3,7 @@ package br.com.leivas.exercise1;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-public class PersonUtil {
+public class ContactUtil {
 
     public static void isValidName(String name) {
         if (nameHasNotOnlyLowerCaseLetters(name)) {
@@ -35,7 +35,7 @@ public class PersonUtil {
     }
 
     private static boolean phoneHasIncorrectSize(String phoneNumber) {
-        return phoneNumber.length() != 7;
+        return phoneNumber.length() != 8;
     }
 
     private static boolean phoneHasLeadingZeros(String phoneNumber) {
