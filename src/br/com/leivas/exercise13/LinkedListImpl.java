@@ -40,11 +40,12 @@ public class LinkedListImpl implements ILinkedList<LinkedListImpl.Node, Integer>
     @Override
     public Node insertAtPosition(Node head, Integer data, int index) {
         Node currNode = head, prev = null;
+        // If passed index is 0, then we should insert at the head.
         if (index == 0) {
             return this.insertAtHead(head, data);
         }
         int counter = 0;
-        // index is not head, we must search for the required position
+        // index is not head, we must search for the required position.
         while (currNode != null) {
             if (counter == index) {
                 Node newNode = new Node(data);
@@ -59,21 +60,8 @@ public class LinkedListImpl implements ILinkedList<LinkedListImpl.Node, Integer>
         }
         // Position not found
         if (currNode == null) {
-            // Display the message
-            System.out.println(
-                    index + " position element not found");
+            throw new PositionNotFoundException("The desired position was not found!");
         }
         return this.head;
-    }
-
-    public void printList(LinkedListImpl list) {
-        Node currNode = list.head;
-        System.out.print("\nLinkedList: ");
-        // Traverse through the LinkedList
-        while (currNode != null) {
-            System.out.print(currNode.data + " ");
-            currNode = currNode.next;
-        }
-        System.out.println("\n");
     }
 }
