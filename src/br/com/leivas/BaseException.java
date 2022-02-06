@@ -1,10 +1,10 @@
-package br.com.leivas.exercise1;
+package br.com.leivas;
 
-public class InvalidValueException extends RuntimeException {
+public class BaseException extends RuntimeException {
 
     private final String message;
 
-    public InvalidValueException(String message) {
+    public BaseException(String message) {
         this.message = message;
     }
 
