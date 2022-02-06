@@ -1,23 +1,27 @@
 package br.com.leivas.exercise4;
 
+import br.com.leivas.ScannerUtil;
 import br.com.leivas.ValueNotValidException;
 
 import java.util.Scanner;
 
 public class Solution4 {
-    static Scanner scanner = new Scanner(System.in);
+    private static final ScannerUtil scannerUtil = ScannerUtil.getInstance();
 
     public static void main(String[] args) {
         int operation = 1;
+        final Scanner scanner = scannerUtil.getScanner();
         while (operation != 2) {
             System.out.println("1- Divisors sum / 2- Leave program\n");
             operation = scanner.nextInt();
             shouldSum(operation);
         }
+        scanner.close();
     }
 
     public static void shouldSum(int operation) {
         if (operation == 1) {
+            final Scanner scanner = scannerUtil.getScanner();
             try {
                 AdvancedArithmetic<Integer> calculator = new MyCalculator();
                 System.out.println("Type a number to sum its divisors\n");

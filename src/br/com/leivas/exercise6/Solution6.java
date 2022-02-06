@@ -1,11 +1,14 @@
 package br.com.leivas.exercise6;
 
+import br.com.leivas.ScannerUtil;
+
 public class Solution6 {
     public static void main(String[] args) {
-        ArraySumerUtil arraySumerUtil = new ArraySumerUtil();
+        ArraySumUtil arraySumerUtil = new ArraySumUtil();
         arraySumerUtil.readElementsTotal();
         arraySumerUtil.readEachElement();
         arraySumerUtil.printAllElements();
         arraySumerUtil.printSumOfAllElements();
+        ScannerUtil.getInstance().dispose();
     }
 }

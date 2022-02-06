@@ -1,4 +1,4 @@
-package br.com.leivas.exercise1;
+package br.com.leivas;
 
 import java.util.Scanner;
 
@@ -18,7 +18,14 @@ public class ScannerUtil {
         return instance;
     }
 
+    public void dispose() {
+        this.scanner.close();
+    }
+
     public Scanner getScanner() {
+        if (this.scanner == null) {
+            this.scanner = new Scanner(System.in);
+        }
         return scanner;
     }
 }

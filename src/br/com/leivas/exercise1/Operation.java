@@ -1,5 +1,6 @@
 package br.com.leivas.exercise1;
 
+import br.com.leivas.ScannerUtil;
 import br.com.leivas.ValueNotValidException;
 
 import java.util.Scanner;
@@ -8,7 +9,8 @@ public class Operation {
 
     public int readElementsTotal() {
         int totalElements = 0;
-        final Scanner scanner = ScannerUtil.getInstance().getScanner();
+        final ScannerUtil scannerUtil = ScannerUtil.getInstance();
+        final Scanner scanner = scannerUtil.getScanner();
         while (this.isNotAValidNumberOfElements(totalElements)) {
             System.out.println("Please type a valid number of elements (the range is beteween 1 and 100000)\n");
             try {
@@ -22,7 +24,8 @@ public class Operation {
 
     public void fillElements(int totalElements) {
         final Repository<Contact> contactRepository = ContactRepository.instance();
-        final Scanner scanner = ScannerUtil.getInstance().getScanner();
+        final ScannerUtil scannerUtil = ScannerUtil.getInstance();
+        final Scanner scanner = scannerUtil.getScanner();
         for (int i = 0; i < totalElements; i++) {
             try {
                 System.out.println("Element: " + (i + 1));
@@ -41,7 +44,8 @@ public class Operation {
     }
 
     public void findElements() {
-        final Scanner scanner = ScannerUtil.getInstance().getScanner();
+        final ScannerUtil scannerUtil = ScannerUtil.getInstance();
+        final Scanner scanner = scannerUtil.getScanner();
         int operationChooser = 1;
         while (operationChooser != 3) {
             System.out.println("Type what you would like to do: 1- Search contact by name / 2- List contacts / 3- Leave program\n");

@@ -1,31 +1,32 @@
 package br.com.leivas.exercise6;
 
+import br.com.leivas.ScannerUtil;
+
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ArraySumerUtil {
+public class ArraySumUtil {
 
-    private final Scanner scanner;
+    private final ScannerUtil scannerUtil = ScannerUtil.getInstance();
     private int elementsLength = 0;
     private int[] array;
 
-    public ArraySumerUtil() {
-        this.scanner = new Scanner(System.in);
-    }
 
     public void readElementsTotal() {
+        final Scanner scanner = scannerUtil.getScanner();
         System.out.println("Type how many elements it will be in the array\n");
-        this.elementsLength = this.scanner.nextInt();
+        this.elementsLength = scanner.nextInt();
         this.array = new int[this.elementsLength];
     }
 
     public void readEachElement() {
         if (this.elementsLength != 0) {
+            final Scanner scanner = scannerUtil.getScanner();
             for (int i = 0; i < this.elementsLength; i++) {
                 System.out.println("Type element " + (i + 1));
-                this.array[i] = this.scanner.nextInt();
+                this.array[i] = scanner.nextInt();
             }
         }
     }

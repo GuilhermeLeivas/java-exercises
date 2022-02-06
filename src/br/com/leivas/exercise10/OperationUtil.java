@@ -1,13 +1,22 @@
 package br.com.leivas.exercise10;
 
+import br.com.leivas.ScannerUtil;
+
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public record OperationUtil(List<Integer> list) {
+public final class OperationUtil {
+    private final List<Integer> list;
+    private final ScannerUtil scannerUtil = ScannerUtil.getInstance();
+
+    public OperationUtil(List<Integer> list) {
+        this.list = list;
+    }
 
     public void OnListOperation() {
-        final Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = scannerUtil.getScanner();
         System.out.println("Type the operation you want: \n");
         System.out.println("-add\n-remove\n");
         final String choosedOperation = scanner.nextLine();
@@ -36,4 +45,28 @@ public record OperationUtil(List<Integer> list) {
                 .collect(Collectors.joining(" "));
         System.out.println("[" + joiningResult + "]");
     }
+
+    public List<Integer> list() {
+        return list;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (OperationUtil) obj;
+        return Objects.equals(this.list, that.list);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(list);
+    }
+
+    @Override
+    public String toString() {
+        return "OperationUtil[" +
+                "list=" + list + ']';
+    }
+
 }
