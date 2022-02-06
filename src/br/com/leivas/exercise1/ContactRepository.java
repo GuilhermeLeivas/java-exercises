@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public final class ContactRepository {
+public final class ContactRepository implements Repository<Contact> {
 
     private ContactRepository() {
     }
@@ -15,35 +15,52 @@ public final class ContactRepository {
     private Map<String, String> people;
 
 
-    public static ContactRepository instance() {
+    public static Repository<Contact> instance() {
         if (repositoryInstance == null) {
             repositoryInstance = new ContactRepository();
         }
         return repositoryInstance;
     }
 
-    public Contact savePerson(String name, String phone) {
-        final Contact contact = new ContactFactory().produce(name, phone);
-        this.addToMap(contact);
-        return contact;
+    @Override
+    public Contact save(Contact contact) {
+        return this.addToMap(contact);
     }
 
     public List<Contact> findAll() {
         return this.people.entrySet().stream().map(entry -> new Contact(entry.getKey(), entry.getValue())).collect(Collectors.toList());
     }
 
-    public Optional<Contact> findByName(String name) {
-        return this.people.entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().equalsIgnoreCase(name))
-                .map(entry -> new Contact(entry.getKey(), entry.getValue()))
-                .findFirst();
+    @Override
+    public Optional<Contact> findById(int id) {
+        return Optional.empty();
     }
 
-    private void addToMap(Contact person) {
+    /**
+     * Here i am not using the @param arg correctly because we are not using any database.
+     * But it could be quite easily used in some sql like "Select * from Entity where arg = value"
+     *
+     * @param arg   Arg to be queried
+     * @param value Value to arg
+     * @return Optional of Contact queried
+     */
+    @Override
+    public Optional<Contact> findByArg(String arg, String value) {
+        if ("name".equals(arg)) {
+            return this.people.entrySet()
+                    .stream()
+                    .filter(entry -> entry.getKey().equalsIgnoreCase(value))
+                    .map(entry -> new Contact(entry.getKey(), entry.getValue()))
+                    .findFirst();
+        }
+        return Optional.empty();
+    }
+
+    private Contact addToMap(Contact contact) {
         if (this.people == null) {
             this.people = new HashMap<>();
         }
-        this.people.put(person.getName(), person.getPhone());
+        this.people.put(contact.getName(), contact.getPhone());
+        return contact;
     }
 }

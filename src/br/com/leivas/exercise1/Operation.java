@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Operation {
 
-
     public int readElementsTotal() {
         int totalElements = 0;
         final Scanner scanner = ScannerUtil.getInstance().getScanner();
@@ -22,7 +21,7 @@ public class Operation {
     }
 
     public void fillElements(int totalElements) {
-        ContactRepository contactRepository = ContactRepository.instance();
+        final Repository<Contact> contactRepository = ContactRepository.instance();
         final Scanner scanner = ScannerUtil.getInstance().getScanner();
         for (int i = 0; i < totalElements; i++) {
             try {
@@ -31,7 +30,8 @@ public class Operation {
                 String name = scanner.nextLine();
                 System.out.println("Type a phone number\n");
                 String phoneNumber = scanner.nextLine();
-                final Contact contact = contactRepository.savePerson(name, phoneNumber);
+                Contact contact = new ContactFactory().produce(name, phoneNumber);
+                contactRepository.save(contact);
                 System.out.println("Contact add: " + contact);
             } catch (ValueNotValidException ex) {
                 System.out.println(ex.getMessage());

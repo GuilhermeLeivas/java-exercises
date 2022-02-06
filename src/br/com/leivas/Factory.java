@@ -1,4 +1,4 @@
-package br.com.leivas.exercise9;
+package br.com.leivas;
 
 public interface Factory<I, O> {
 
