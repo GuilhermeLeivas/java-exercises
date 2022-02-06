@@ -23,7 +23,7 @@ public class Solution4 {
                 System.out.println("Type a number to sum its divisors\n");
                 final int value = scanner.nextInt();
                 final Integer result = calculator.divisorSum(value);
-                System.out.printf("The sum of Divisors of %s is : %s\n", value, result);
+                System.out.printf("%s Divisors sum is : %s\n", value, result);
             } catch (ValueNotValidException ex) {
                 System.out.println(ex.getMessage());
             }
