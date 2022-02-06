@@ -1,20 +1,35 @@
 package br.com.leivas.exercise7;
 
+import java.util.Objects;
+
 public class CharacterPair {
 
-    private final String charactererOne;
-    private final String charactererTwo;
+    private final Character charactererOne;
+    private final Character charactererTwo;
 
     public CharacterPair(char charactererOne, char charactererTwo) {
-        this.charactererOne = String.valueOf(charactererOne);
-        this.charactererTwo = String.valueOf(charactererTwo);
+        this.charactererOne = charactererOne;
+        this.charactererTwo = charactererTwo;
     }
 
-    public String getCharactererOne() {
+    public Character getCharactererOne() {
         return charactererOne;
     }
 
-    public String getCharactererTwo() {
+    public Character getCharactererTwo() {
         return charactererTwo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CharacterPair that = (CharacterPair) o;
+        return charactererOne.equals(that.charactererOne) && charactererTwo.equals(that.charactererTwo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(charactererOne, charactererTwo);
     }
 }
