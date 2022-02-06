@@ -4,8 +4,13 @@ public class Solution7 {
 
     public static void main(String[] args) {
 
-        AlternateStringUtil alternateStringUtil = new AlternateStringUtil("abaacdabd");
-        final String result = alternateStringUtil.alternateString();
-        System.out.println(result);
+        try {
+            final String result = new AlternatingStringMaker("abaacdabd").makeAlternateString();
+            final String result2 = new AlternatingStringMaker("beabeefeab").makeAlternateString();
+            System.out.println(result);
+            System.out.println(result2);
+        } catch (NoAlternateResultFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
