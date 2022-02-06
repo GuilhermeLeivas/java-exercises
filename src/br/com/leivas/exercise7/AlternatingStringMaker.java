@@ -1,53 +1,47 @@
 package br.com.leivas.exercise7;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import br.com.leivas.StringUtils;
 
-public class AlternatingStringMaker {
+import java.util.*;
+
+public final class AlternatingStringMaker {
 
     private final String valueUnderTest;
-    private String bestResult;
-    private int bestLengthResult = 0;
-    private Character[] characters;
+    private final List<CharacterPair> pairs = new ArrayList<>();
     private final Set<String> candidates = new HashSet<>();
+    private String bestResult;
+    private int bestResultLength = 0;
 
     public AlternatingStringMaker(String value) {
         this.valueUnderTest = value;
     }
 
     public String makeAlternateString() {
-        this.extractUniqueCharacteres();
-        this.testCharacteresPairs();
+        this.buildAndTestCharacterPairs();
         this.defineBestResult();
-        return String.format("The best Result for String %s is: %s, with length: %s", this.valueUnderTest, this.bestResult, this.bestLengthResult);
+        return String.format("The best Result for String %s is: %s, with length: %s", this.valueUnderTest, this.bestResult, this.bestResultLength);
     }
 
-    public void extractUniqueCharacteres() {
-        Set<Character> characterSet = new HashSet<>();
-        for (int i = 0; i < this.valueUnderTest.length(); i++) {
-            characterSet.add(this.valueUnderTest.charAt(i));
+    private void buildAndTestCharacterPairs() {
+        List<Character> characters = new StringUtils().extractUniqueCharacteres(this.valueUnderTest);
+        for (int current = 0; current < characters.size(); current++) {
+            for (int next = current + 1; next < characters.size(); next++) {
+                CharacterPair characterPair = new CharacterPair(characters.get(current), characters.get(next));
+                this.pairs.add(characterPair);
+            }
         }
-        this.characters = characterSet.toArray(new Character[characterSet.size()]);
+        this.testCharacteresPairs();
     }
 
     private void testCharacteresPairs() {
-        for (int current = 0; current < this.characters.length; current++) {
-            for (int next = current + 1; next < this.characters.length; next++) {
-                String candidate = this.valueUnderTest;
-                CharacterPair characterPair = new CharacterPair(characters[current], characters[next]);
-                candidate = this.removePair(candidate, characterPair);
-                if (this.isAlternatingString(candidate)) {
-                    this.candidates.add(candidate);
-                }
+        final StringUtils stringUtils = new StringUtils();
+        for (CharacterPair pair : this.pairs) {
+            String candidate = this.valueUnderTest;
+            candidate = stringUtils.removeCharacters(candidate, Arrays.asList(pair.getCharactererOne(), pair.getCharactererTwo()));
+            if (this.isAlternatingString(candidate)) {
+                this.candidates.add(candidate);
             }
         }
-    }
-
-    private String removePair(String candidate, CharacterPair pair) {
-        candidate = candidate.replaceAll(pair.getCharactererOne(), "");
-        candidate = candidate.replaceAll(pair.getCharactererTwo(), "");
-        return candidate;
     }
 
     private void defineBestResult() {
@@ -56,18 +50,15 @@ public class AlternatingStringMaker {
         }
         this.bestResult = this.candidates.stream().
                 max(Comparator.comparingInt(String::length)).get();
-        this.bestLengthResult = this.bestResult.length();
+        this.bestResultLength = this.bestResult.length();
     }
 
-    private boolean isAlternatingString(String s) {
-        for (int i = 0; i < s.length() - 2; i++) {
-            if (s.charAt(i) != s.charAt(i + 2)) {
+    private boolean isAlternatingString(String candidate) {
+        for (int i = 0; i < candidate.length() - 2; i++) {
+            if (candidate.charAt(i) != candidate.charAt(i + 2)) {
                 return false;
             }
         }
-        if (s.charAt(0) == s.charAt(1)) {
-            return false;
-        }
-        return true;
+        return candidate.charAt(0) != candidate.charAt(1);
     }
 }
