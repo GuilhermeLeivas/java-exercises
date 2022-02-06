@@ -2,7 +2,7 @@ package br.com.leivas.exercise10;
 
 import java.util.ArrayList;
 
-public class FixedSizedList<T> extends ArrayList<T> {
+public final class FixedSizedList<T> extends ArrayList<T> {
 
     public FixedSizedList(int capacity) {
         super(capacity);
