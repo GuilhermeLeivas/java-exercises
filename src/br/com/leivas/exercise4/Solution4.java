@@ -16,11 +16,15 @@ public class Solution4 {
 
     public static void shouldSum(int operation) {
         if (operation == 1) {
-            AdvancedArithmetic<Integer> calculator = new MyCalculator();
-            System.out.println("Type a number to sum its divisors\n");
-            final int value = scanner.nextInt();
-            final Integer result = calculator.divisorSum(value);
-            System.out.printf("The sum of Divisors of %s is : %s\n", value, result);
+            try {
+                AdvancedArithmetic<Integer> calculator = new MyCalculator();
+                System.out.println("Type a number to sum its divisors\n");
+                final int value = scanner.nextInt();
+                final Integer result = calculator.divisorSum(value);
+                System.out.printf("The sum of Divisors of %s is : %s\n", value, result);
+            } catch (ValueNotValidException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

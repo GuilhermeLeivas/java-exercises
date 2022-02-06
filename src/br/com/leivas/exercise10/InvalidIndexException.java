@@ -1,15 +1,11 @@
 package br.com.leivas.exercise10;
 
-public class InvalidIndexException extends RuntimeException {
+import br.com.leivas.BaseException;
 
-    private String message;
+public class InvalidIndexException extends BaseException {
 
     public InvalidIndexException(String message) {
-        this.message = message;
+        super(message);
     }
 
-    @Override
-    public String getMessage() {
-        return this.message;
-    }
 }

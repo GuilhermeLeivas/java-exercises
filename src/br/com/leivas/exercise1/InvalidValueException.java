@@ -1,15 +1,11 @@
 package br.com.leivas.exercise1;
 
-public class InvalidValueException extends RuntimeException {
+import br.com.leivas.BaseException;
 
-    private final String message;
+public class InvalidValueException extends BaseException {
 
     public InvalidValueException(String message) {
-        this.message = message;
+        super(message);
     }
 
-    @Override
-    public String getMessage() {
-        return this.message;
-    }
 }
