@@ -1,5 +1,7 @@
 package br.com.leivas.exercise1;
 
+import br.com.leivas.ValueNotValidException;
+
 import java.util.Scanner;
 
 public class Operation {
@@ -12,7 +14,7 @@ public class Operation {
             System.out.println("Please type a valid number of elements (the range is beteween 1 and 100000)\n");
             try {
                 totalElements = ParseUtil.tryParse(scanner.nextLine());
-            } catch (InvalidValueException ex) {
+            } catch (ValueNotValidException ex) {
                 System.out.println(ex.getMessage());
             }
         }
@@ -31,7 +33,7 @@ public class Operation {
                 String phoneNumber = scanner.nextLine();
                 final Contact contact = contactRepository.savePerson(name, phoneNumber);
                 System.out.println("Contact add: " + contact);
-            } catch (InvalidValueException ex) {
+            } catch (ValueNotValidException ex) {
                 System.out.println(ex.getMessage());
                 i--;
             }
@@ -47,7 +49,7 @@ public class Operation {
                 operationChooser = ParseUtil.tryParse(scanner.nextLine());
                 final Object response = ContactSearchUtil.search(operationChooser);
                 System.out.println(response.toString());
-            } catch (InvalidValueException ex) {
+            } catch (ValueNotValidException ex) {
                 System.out.println(ex.getMessage());
             }
         }
