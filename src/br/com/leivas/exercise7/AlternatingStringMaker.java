@@ -9,6 +9,7 @@ public final class AlternatingStringMaker {
     private final String valueUnderTest;
     private final List<CharacterPair> pairs = new ArrayList<>();
     private final Set<String> candidates = new HashSet<>();
+    private List<Character> characters;
     private String bestResult;
     private int bestResultLength = 0;
 
@@ -23,7 +24,7 @@ public final class AlternatingStringMaker {
     }
 
     private void buildAndTestCharacterPairs() {
-        List<Character> characters = new StringUtils().extractUniqueCharacteres(this.valueUnderTest);
+        this.characters = new StringUtils().extractUniqueCharacteres(this.valueUnderTest);
         for (int current = 0; current < characters.size(); current++) {
             for (int next = current + 1; next < characters.size(); next++) {
                 CharacterPair characterPair = new CharacterPair(characters.get(current), characters.get(next));
@@ -37,7 +38,9 @@ public final class AlternatingStringMaker {
         final StringUtils stringUtils = new StringUtils();
         for (CharacterPair pair : this.pairs) {
             String candidate = this.valueUnderTest;
-            candidate = stringUtils.removeCharacters(candidate, Arrays.asList(pair.getCharactererOne(), pair.getCharactererTwo()));
+            List<Character> charactersAux = new ArrayList<>(this.characters);
+            charactersAux.removeAll(Arrays.asList(pair.getCharactererOne(), pair.getCharactererTwo()));
+            candidate = stringUtils.removeCharacters(candidate, charactersAux);
             if (this.isAlternatingString(candidate)) {
                 this.candidates.add(candidate);
             }
