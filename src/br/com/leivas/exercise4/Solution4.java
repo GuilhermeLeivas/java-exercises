@@ -1,5 +1,7 @@
 package br.com.leivas.exercise4;
 
+import br.com.leivas.ValueNotValidException;
+
 import java.util.Scanner;
 
 public class Solution4 {
