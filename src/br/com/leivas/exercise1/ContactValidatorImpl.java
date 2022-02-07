@@ -1,18 +1,22 @@
 package br.com.leivas.exercise1;
 
+import br.com.leivas.StringUtils;
 import br.com.leivas.ValueNotValidException;
 
-import static br.com.leivas.StringUtils.stringHasNotOnlyLowerCase;
-import static br.com.leivas.StringUtils.stringHasNumbers;
 
 public class ContactValidatorImpl implements ContactValidator {
+    private final StringUtils stringUtils;
+
+    public ContactValidatorImpl() {
+        this.stringUtils = new StringUtils();
+    }
 
     @Override
     public void isValidName(String name) {
-        if (stringHasNotOnlyLowerCase(name)) {
+        if (stringUtils.stringHasNotOnlyLowerCase(name)) {
             throw new ValueNotValidException("Name must have only lower case digits.");
         }
-        if (stringHasNumbers(name)) {
+        if (stringUtils.stringHasNumbers(name)) {
             throw new ValueNotValidException("Name must have only letters, please remove all numbers on it.");
         }
     }
