@@ -4,7 +4,7 @@ import br.com.leivas.StringUtils;
 
 import java.util.*;
 
-public final class AlternatingStringMaker {
+public final class AlternatingStringMaker implements IAlternateStringMaker {
 
     private final String valueUnderTest;
     private final List<CharacterPair> pairs = new ArrayList<>();
@@ -17,6 +17,7 @@ public final class AlternatingStringMaker {
         this.valueUnderTest = value;
     }
 
+    @Override
     public String makeAlternateString() {
         this.buildAndTestCharacterPairs();
         this.defineBestResult();
