@@ -9,6 +9,6 @@ public class Solution13 {
         final LinkedListImpl.Node head2 = list.insert(head1, 55);
         final LinkedListImpl.Node head3 = list.insertAtPosition(head2, 5, 2);
         final LinkedListImpl.Node head4 = list.insertAtPosition(head3, 85, 0);
-        // this was in exercise 13: "Do NOT print anything to stdout/console.". So, i won't print anything on the console.
+        // In exercise 13 it says: "Do NOT print anything to stdout/console.". So, i won't print anything on the console.
     }
 }
