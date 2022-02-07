@@ -1,4 +1,4 @@
-package br.com.leivas;
+package br.com.leivas.common;
 
 public class BaseException extends RuntimeException {
 

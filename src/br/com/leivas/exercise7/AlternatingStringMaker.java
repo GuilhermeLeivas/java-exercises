@@ -1,6 +1,6 @@
 package br.com.leivas.exercise7;
 
-import br.com.leivas.StringUtils;
+import br.com.leivas.common.StringUtils;
 
 import java.util.*;
 

@@ -1,10 +1,13 @@
 package br.com.leivas.exercise10;
 
-import br.com.leivas.ScannerUtil;
+import br.com.leivas.common.ScannerUtil;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public final class OperationUtil {
@@ -35,7 +38,7 @@ public final class OperationUtil {
                 }
             }
         } catch (Exception ex) {
-
+            Logger.getLogger(OperationUtil.class.getSimpleName()).log(Level.SEVERE, "Failed to complete operation %s", Arrays.toString(ex.getStackTrace()));
         }
     }
 

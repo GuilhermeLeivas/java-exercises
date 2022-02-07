@@ -1,4 +1,4 @@
-package br.com.leivas;
+package br.com.leivas.common;
 
 import java.util.*;
 import java.util.regex.Pattern;

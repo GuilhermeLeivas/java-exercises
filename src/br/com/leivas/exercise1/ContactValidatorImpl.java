@@ -1,7 +1,7 @@
 package br.com.leivas.exercise1;
 
-import br.com.leivas.StringUtils;
-import br.com.leivas.ValueNotValidException;
+import br.com.leivas.common.StringUtils;
+import br.com.leivas.common.ValueNotValidException;
 
 
 public class ContactValidatorImpl implements ContactValidator {

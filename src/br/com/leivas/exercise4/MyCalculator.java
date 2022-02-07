@@ -1,6 +1,6 @@
 package br.com.leivas.exercise4;
 
-import br.com.leivas.ValueNotValidException;
+import br.com.leivas.common.ValueNotValidException;
 
 import java.util.stream.IntStream;
 

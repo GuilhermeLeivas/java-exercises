@@ -1,4 +1,4 @@
-package br.com.leivas;
+package br.com.leivas.common;
 
 public class ValueNotValidException extends BaseException {
     public ValueNotValidException(String message) {

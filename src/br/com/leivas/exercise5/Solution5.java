@@ -1,6 +1,6 @@
 package br.com.leivas.exercise5;
 
-import br.com.leivas.ScannerUtil;
+import br.com.leivas.common.ScannerUtil;
 
 import java.lang.reflect.Method;
 import java.util.Scanner;

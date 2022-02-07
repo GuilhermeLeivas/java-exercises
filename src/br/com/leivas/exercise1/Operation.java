@@ -1,7 +1,7 @@
 package br.com.leivas.exercise1;
 
-import br.com.leivas.ScannerUtil;
-import br.com.leivas.ValueNotValidException;
+import br.com.leivas.common.ScannerUtil;
+import br.com.leivas.common.ValueNotValidException;
 
 import java.util.Scanner;
 

@@ -1,6 +1,6 @@
 package br.com.leivas.exercise1;
 
-import br.com.leivas.ScannerUtil;
+import br.com.leivas.common.ScannerUtil;
 
 public class Solution1 {
 

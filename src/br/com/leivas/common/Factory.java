@@ -1,4 +1,4 @@
-package br.com.leivas;
+package br.com.leivas.common;
 
 public interface Factory<I, O> {
 

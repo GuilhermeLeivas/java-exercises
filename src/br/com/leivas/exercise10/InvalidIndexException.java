@@ -1,6 +1,6 @@
 package br.com.leivas.exercise10;
 
-import br.com.leivas.BaseException;
+import br.com.leivas.common.BaseException;
 
 public class InvalidIndexException extends BaseException {
 

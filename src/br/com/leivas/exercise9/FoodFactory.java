@@ -1,6 +1,6 @@
 package br.com.leivas.exercise9;
 
-import br.com.leivas.Factory;
+import br.com.leivas.common.Factory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
